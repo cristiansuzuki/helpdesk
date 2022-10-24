@@ -1,4 +1,22 @@
 from django.shortcuts import render
+from .forms import *
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.views.decorators.http import require_POST
+
+# Views de CADASTRO
+
+def cadastro_cliente(request):
+    if request.method == "POST":
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    return render(request, '', {'form': form})
+    # alterar caminho de cadastro do cliente aqui e na URL
+    # criar ELSE
 
 # Create your views here.
 def home(request):

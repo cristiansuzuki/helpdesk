@@ -12,6 +12,7 @@ class Cliente(models.Model):
     nome_cliente = models.CharField(max_length=100)
     cnpj = models.IntegerField()
     telefone = models.IntegerField()
+    empresa = models.CharField(max_length=100, default='')
 
     def __str__(self):
         return self.nome_cliente
@@ -47,13 +48,11 @@ class Chamado(models.Model):
     data = models.DateTimeField(auto_now=True)
     descricao = models.TextField(max_length=1000)
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
-    tipo = models.ForeignKey(TipoChamado, on_delete=models.CASCADE)
+    tipo_chamado = models.ForeignKey(TipoChamado, on_delete=models.CASCADE)
     resolução = models.TextField(max_length=1000)
     sistema = models.ForeignKey(Sistema, on_delete=models.CASCADE)
     solicitante = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.Chamado.id
 
 
 
