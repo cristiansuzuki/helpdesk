@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-
 class Funcionario(models.Model):
     nome_funcionario = models.CharField(max_length=100)
 
@@ -52,9 +51,3 @@ class Chamado(models.Model):
     resolução = models.TextField(max_length=1000)
     sistema = models.ForeignKey(Sistema, on_delete=models.CASCADE)
     solicitante = models.CharField(max_length=100)
-
-
-
-
-
-

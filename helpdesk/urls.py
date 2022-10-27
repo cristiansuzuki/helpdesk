@@ -1,9 +1,9 @@
-from tkinter import N
 from django.urls import path
-from .views import home, buttons, cards, login, register, forgot_password, error_404, blank, tables
+from .views import home, cadastro_cliente, buttons, cards, login, register, forgot_password, error_404, blank, tables
 
 urlpatterns = [
     path('', home, name='home'),
+    path('cadastro-cliente', cadastro_cliente, name='cadastro-cliente'),
     path('buttons', buttons, name='buttons'),
     path('cards', cards, name='cards'),
     path('login', login, name='login'),
