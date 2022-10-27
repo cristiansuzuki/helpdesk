@@ -11,13 +11,7 @@ def cadastro_cliente(request):
     if request.method == "POST":
         form = ClienteForm(request.POST)
         if form.is_valid():
-            newform = Cliente(
-                nome_cliente=form.changed_data['nome_cliente'],
-                cnpj=form.changed_data['cnpj'],
-                telefone=form.changed_data['telefone'],
-                empresa=form.changed_data['empresa']
-            )
-            newform.save()
+            form.save()
             return redirect(home)
     else:
         form = ClienteForm()
