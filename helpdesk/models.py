@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 class Funcionario(models.Model):
@@ -42,7 +43,7 @@ class TipoChamado(models.Model):
 
 class Chamado(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+    funcionario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,)
     prioridade = models.ForeignKey(Prioridade, on_delete=models.CASCADE)
     data = models.DateTimeField(auto_now=True)
     descricao = models.TextField(max_length=1000)
