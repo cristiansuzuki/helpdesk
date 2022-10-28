@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.conf import settings
 
@@ -44,11 +45,11 @@ class TipoChamado(models.Model):
 class Chamado(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     funcionario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,)
-    prioridade = models.ForeignKey(Prioridade, on_delete=models.CASCADE)
-    data = models.DateTimeField(auto_now=True)
+    prioridade = models.ForeignKey(Prioridade, on_delete=models.CASCADE, default=2)
+    data = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     descricao = models.TextField(max_length=1000)
-    status = models.ForeignKey(Status, on_delete=models.CASCADE)
-    tipo_chamado = models.ForeignKey(TipoChamado, on_delete=models.CASCADE)
+    status = models.ForeignKey(Status, on_delete=models.CASCADE, default=1)
+    tipo_chamado = models.ForeignKey(TipoChamado, on_delete=models.CASCADE, default=1)
     resolucao = models.TextField(max_length=1000)
     sistema = models.ForeignKey(Sistema, on_delete=models.CASCADE)
     solicitante = models.CharField(max_length=100)
