@@ -22,21 +22,21 @@ class ChamadoForm(forms.ModelForm):
         fields = ('cliente', 'funcionario', 'prioridade', 'descricao', 'status', 'tipo_chamado', 'resolucao', 'sistema', 'solicitante')
         widgets = {
             'cliente':forms.Select(
-                attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),
+                attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleFormControlSelect1', 'placeholder': '', 'value': ''}),
             'funcionario':forms.Select(
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),
             'prioridade':forms.Select(
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),
-            'descricao': forms.TextInput(
-                  attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': 'Descricao do chamado'}),
+            'descricao': forms.Textarea(
+                  attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': 'Descrição do chamado!'}),
             'status': forms.Select(
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),                
             'tipo_chamado': forms.Select(
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),
             'resolucao': forms.TextInput(
-                attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': 'Resolução do chamado'}),     
+                attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': ''}),     
             'sistema': forms.Select(
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),
             'solicitante': forms.TextInput(
-                attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': 'Solicitante do chamado'}),
+                attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': ''}),
         }

@@ -1,0 +1,87 @@
+{% extends 'index.html' %}
+{% block title %} Realizar Chamado {% endblock %}
+{% block conteiner %}
+<div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Realizar novo chamado!</h1>
+                        </div>
+                        <form method="POST">{% csrf_token %}
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Clientes</label>
+                                    </div>
+                                    {{ form.cliente }}
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Funcionário</label>
+                                    </div>
+                                    {{ form.funcionario }}
+                                </div>
+                                
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Prioridade</label>
+                                    </div>
+                                    {{ form.prioridade }}
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Status</label>
+                                    </div>
+                                    {{ form.status }}
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Tipo de Chamado</label>
+                                    </div>
+                                    {{ form.tipo_chamado }}
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Sistema</span>
+                                    </div>
+                                    {{ form.sistema }}
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Solicitante</span>
+                                    </div>
+                                    {{ form.solicitante }}
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Resolução</span>
+                                    </div>
+                                    {{ form.resolucao }}
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    {{ form.descricao }}
+                                </div>
+
+                            <button type="submit" class="btn btn-primary btn-user btn-block">ENVIAR</button>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="{% url 'home' %}">Retorna ao Home!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
