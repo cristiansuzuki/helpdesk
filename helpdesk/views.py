@@ -9,7 +9,8 @@ def home(request):
 
 def lista_chamados(request):
     chamados = Chamado.objects.all()
-    return render(request, 'lista-chamados.html', {'chamados': chamados})
+    chamados_abertos = Chamado.objects.filter(status__nome_status="ABERTO")
+    return render(request, 'lista-chamados.html', {'chamados': chamados, 'chamados_abertos': chamados_abertos})
 
 def cadastro_cliente(request):
     if request.method == "POST":
