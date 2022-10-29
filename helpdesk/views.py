@@ -9,7 +9,7 @@ def home(request):
 
 def lista_chamados(request):
     chamados = Chamado.objects.all()
-    chamados_abertos = Chamado.objects.filter(status__nome_status="ABERTO")
+    chamados_abertos = Chamado.objects.filter(status__nome_status="Aberto")
     return render(request, 'lista-chamados.html', {'chamados': chamados, 'chamados_abertos': chamados_abertos})
 
 def cadastro_cliente(request):
