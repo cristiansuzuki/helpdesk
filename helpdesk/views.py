@@ -5,7 +5,12 @@ from django.shortcuts import redirect
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    chamados = Chamado.objects.all()
+    num_chamados_abertos = len(Chamado.objects.filter(status__nome_status="Aberto"))
+    num_chamados_inicio = len(Chamado.objects.filter(status__nome_status="Início"))
+    num_chamados_finalizado = len(Chamado.objects.filter(status__nome_status="Finalizado"))
+    num_chamados_pendentes = len(Chamado.objects.filter(status__nome_status="Pendentes"))
+    return render(request, 'home.html', {'chamados': chamados, 'num_chamados_abertos':num_chamados_abertos, 'num_chamados_inicio':num_chamados_inicio, 'num_chamados_finalizado':num_chamados_finalizado, 'num_chamados_pendentes':num_chamados_pendentes})
 
 def lista_chamados(request):
     chamados = Chamado.objects.all()
