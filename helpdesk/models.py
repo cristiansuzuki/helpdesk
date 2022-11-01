@@ -49,6 +49,6 @@ class Chamado(models.Model):
     descricao = models.TextField(max_length=1000)
     status = models.ForeignKey(Status, on_delete=models.CASCADE, default=1)
     tipo_chamado = models.ForeignKey(TipoChamado, on_delete=models.CASCADE, default=1)
-    resolucao = models.TextField(max_length=1000)
+    resolucao = models.TextField(max_length=1000, blank=True)
     sistema = models.ForeignKey(Sistema, on_delete=models.CASCADE)
-    solicitante = models.CharField(max_length=100)
+    solicitante = models.CharField(max_length=100, blank=True)

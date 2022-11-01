@@ -17,6 +17,7 @@ class ClienteForm(forms.ModelForm):
         }
 
 class ChamadoForm(forms.ModelForm):
+
     class Meta:
         model = Chamado
         fields = ('cliente', 'funcionario', 'prioridade', 'descricao', 'status', 'tipo_chamado', 'resolucao', 'sistema', 'solicitante')

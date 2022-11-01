@@ -2,27 +2,40 @@ from django.shortcuts import render
 from .forms import ClienteForm, ChamadoForm
 from .models import Chamado
 from django.shortcuts import redirect
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
     chamados = Chamado.objects.all()
-    num_chamados_abertos = len(Chamado.objects.filter(status__nome_status="Aberto"))
-    num_chamados_inicio = len(Chamado.objects.filter(status__nome_status="Início"))
-    num_chamados_finalizado = len(Chamado.objects.filter(status__nome_status="Finalizado"))
-    num_chamados_pendentes = len(Chamado.objects.filter(status__nome_status="Pendentes"))
+    num_chamados_abertos = len(Chamado.objects.filter(status__nome_status="ABERTO"))
+    num_chamados_inicio = len(Chamado.objects.filter(status__nome_status="ANDAMENTO"))
+    num_chamados_finalizado = len(Chamado.objects.filter(status__nome_status="FECHADO"))
+    num_chamados_pendentes = len(Chamado.objects.filter(status__nome_status="PENDENTE"))
     return render(request, 'home.html', {'chamados': chamados, 'num_chamados_abertos':num_chamados_abertos, 'num_chamados_inicio':num_chamados_inicio, 'num_chamados_finalizado':num_chamados_finalizado, 'num_chamados_pendentes':num_chamados_pendentes})
 
 def lista_chamados(request):
     chamados = Chamado.objects.all()
-    chamados_abertos = Chamado.objects.filter(status__nome_status="Aberto")
+    chamados_abertos = Chamado.objects.filter(status__nome_status="ABERTO")
     return render(request, 'lista-chamados.html', {'chamados': chamados, 'chamados_abertos': chamados_abertos})
+
+def lista_chamados_fechados(request):
+    chamados = Chamado.objects.all()
+    chamados_fechados = Chamado.objects.filter(status__nome_status="FECHADO")
+    return render(request, 'lista-chamados-fechados.html', {'chamados': chamados, 'chamados_fechados': chamados_fechados})
+
+def lista_chamados_andamento(request):
+    chamados = Chamado.objects.all()
+    chamados_andamento = Chamado.objects.filter(status__nome_status="ANDAMENTO")
+    return render(request, 'lista-chamados-andamento.html', {'chamados': chamados, 'chamados_andamento': chamados_andamento})
+
 
 def cadastro_cliente(request):
     if request.method == "POST":
         form = ClienteForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(home)
+            messages.success(request, f'Cliente criado com sucesso !')
+            return redirect('cadastro-cliente')
     else:
         form = ClienteForm()
     return render(request, 'cadastro-cliente.html', {'form': form})
@@ -32,7 +45,8 @@ def cadastro_chamados(request):
         form = ChamadoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(home)
+            messages.success(request, f'Chamado criado com sucesso !')
+            return redirect('cadastro-chamados')
     else:
         form = ChamadoForm()
     return render(request, 'cadastro-chamados.html', {'form': form})
