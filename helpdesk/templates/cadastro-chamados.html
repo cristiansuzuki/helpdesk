@@ -1,6 +1,16 @@
 {% extends 'index.html' %}
 {% block title %} Realizar Chamado {% endblock %}
 {% block conteiner %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li {% if message.tags %} class="alert alert-success"{% endif %} style="list-style: none;">{{message}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
 <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
