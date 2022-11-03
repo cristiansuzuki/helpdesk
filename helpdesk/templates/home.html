@@ -90,52 +90,39 @@
                 </div>
             </div>
         </div>
-
-        <!-- Content Row -->
-
-        <div class="row">
-            
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-                <h3>Chamados Recentes</h3>
-                <div class="card shadow mb-4">
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <table class="table text-center">
-                            <thead class="thead-dark">
-                              <tr>
-                                <th scope="col">Cliente</th>
-                                <th scope="col">Técnico</th>
-                                <th scope="col">Prioridade</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Data de abertura</th>
-                                <th scope="col">Tipo do chamado</th>
-                                <th scope="col">Sistema</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                {% for chamado in chamados %}
-                                <tr>
-                                    <td>{{ chamado.cliente }}</td>
-                                    <td>{{ chamado.funcionario }}</td>
-                                    <td>{{ chamado.prioridade }}</td>
-                                    <td>{{ chamado.status }}</td>
-                                    <td>{{ chamado.data }}</td>
-                                    <td>{{ chamado.tipo_chamado }}</td>
-                                    <td>{{ chamado.sistema }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                          </table>
-                    </div>
-                </div>
+        <!-- Area Chart -->
+        <h3>Chamados Recentes</h3>
+        <div class="card shadow mb-4">
+            <!-- Card Body -->
+            <div class="card-body">
+                <table class="table text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Prioridade</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Data de abertura</th>
+                        <th scope="col">Tipo do chamado</th>
+                        <th scope="col">Sistema</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for chamado in chamados %}
+                        <tr>
+                            <td>{{ chamado.cliente }}</td>
+                            <td>{{ chamado.prioridade }}</td>
+                            <td>{{ chamado.status }}</td>
+                            <td>{{ chamado.data }}</td>
+                            <td>{{ chamado.tipo_chamado }}</td>
+                            <td>{{ chamado.sistema }}</td>
+                            <td><a href="{% url 'chamado' chamado.id %}" class="btn btn-outline-secondary btn-sm">Editar</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
-
-
         </div>
-
- 
-
     </div>
     <!-- /.container-fluid -->
 {% endblock %}

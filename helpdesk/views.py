@@ -28,6 +28,13 @@ def lista_chamados_andamento(request):
     chamados_andamento = Chamado.objects.filter(status__nome_status="ANDAMENTO")
     return render(request, 'lista-chamados-andamento.html', {'chamados': chamados, 'chamados_andamento': chamados_andamento})
 
+def chamado(request, id):
+    chamado = Chamado.objects.get(pk=id)
+    form = ChamadoForm(request.POST or None, instance=chamado)
+    if form.is_valid():
+        form.save()
+        return redirect(home)
+    return render(request, 'chamado.html', {'chamado':chamado, 'form':form})
 
 def cadastro_cliente(request):
     if request.method == "POST":
@@ -65,9 +72,3 @@ def blank(request):
 
 def forgot_password(request):
     return render(request, 'forgot-password.html')
-
-def buttons(request):
-    return render(request, 'buttons.html')
-
-def cards(request):
-    return render(request, 'cards.html')
