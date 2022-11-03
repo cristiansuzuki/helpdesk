@@ -29,13 +29,13 @@ class ChamadoForm(forms.ModelForm):
             'prioridade':forms.Select(
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),
             'descricao': forms.Textarea(
-                  attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': 'Descrição do chamado!'}),
+                  attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': 'Descrição do chamado'}),
             'status': forms.Select(
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),                
             'tipo_chamado': forms.Select(
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),
-            'resolucao': forms.TextInput(
-                attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': ''}),     
+            'resolucao': forms.Textarea(
+                attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': 'Resolução do chamado'}),     
             'sistema': forms.Select(
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),
             'solicitante': forms.TextInput(
