@@ -18,7 +18,7 @@
                 <div class="col-lg-12">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Realizar novo chamado!</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Realizar novo chamado</h1>
                         </div>
                         <form method="POST">{% csrf_token %}
                                 <div class="input-group mb-3">
@@ -72,13 +72,6 @@
 
                                 <div class="form-group mb-3">
                                     {{ form.descricao }}
-                                </div>
-
-                                <hr>
-                                <h3>Resolução:</h3>
-
-                                <div class="input-group mb-3">
-                                    {{ form.resolucao }}
                                 </div>
 
                             <button type="submit" class="btn btn-primary btn-user btn-block">ENVIAR</button>
