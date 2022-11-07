@@ -13,6 +13,9 @@ def home(request):
     num_chamados_pendentes = len(Chamado.objects.filter(status__nome_status="PENDENTE"))
     return render(request, 'home.html', {'chamados': chamados, 'num_chamados_abertos':num_chamados_abertos, 'num_chamados_inicio':num_chamados_inicio, 'num_chamados_finalizado':num_chamados_finalizado, 'num_chamados_pendentes':num_chamados_pendentes})
 
+def calendario(request):
+    return render(request, 'calendario.html')
+
 def lista_chamados(request):
     chamados = Chamado.objects.all()
     chamados_abertos = Chamado.objects.filter(status__nome_status="ABERTO")

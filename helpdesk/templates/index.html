@@ -22,6 +22,9 @@
     <!-- Custom styles for tables -->
     <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
 
+    <!-- Custom styles for calendar -->
+    <link href="{% static 'css/calendar.css' %}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -37,7 +40,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">HelpDesk <sup>1</sup></div>
+                <div class="sidebar-brand-text mx-3"> HelpDesk </div>
             </a>
 
             <!-- Divider -->
@@ -45,9 +48,9 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                <a class="nav-link" href="{% url 'calendario' %}">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendário</span></a>
             </li>
 
             <!-- Divider -->
@@ -88,14 +91,14 @@
             <!-- Nav Item - ClienteAdd -->
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'cadastro-cliente' %}">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="far fa-address-book"></i>
                     <span>Adicionar Cliente</span></a>
             </li>
 
             <!-- Nav Item - ClienteAdd -->
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'cadastro-chamados' %}">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="	far fa-clipboard"></i>
                     <span>Adicionar Chamado</span></a>
             </li>
 
@@ -390,6 +393,9 @@
 
     <!-- Page level custom scripts tables -->
     <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+    <!-- Page level custom scripts calendar -->
+    <script src="{% static 'js/calendar.js' %}"></script>
 
     <script>
         $(document).ready(function() {
