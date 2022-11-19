@@ -20,8 +20,10 @@ class ChamadoForm(forms.ModelForm):
 
     class Meta:
         model = Chamado
-        fields = ('cliente', 'funcionario', 'prioridade', 'descricao', 'status', 'tipo_chamado', 'resolucao', 'sistema', 'solicitante')
+        fields = ('titulo', 'cliente', 'funcionario', 'prioridade', 'descricao', 'status', 'tipo_chamado', 'resolucao', 'sistema', 'solicitante')
         widgets = {
+            'titulo': forms.TextInput(
+                  attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': 'Titulo do chamado'}),
             'cliente':forms.Select(
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleFormControlSelect1', 'placeholder': '', 'value': ''}),
             'funcionario':forms.Select(

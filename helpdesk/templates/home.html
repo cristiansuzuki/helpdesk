@@ -1,6 +1,16 @@
 {% extends 'index.html' %}
 {% block title %} Home {% endblock %}
 {% block conteiner %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li {% if message.tags %} class="alert alert-success"{% endif %} style="list-style: none;">{{message}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
@@ -99,6 +109,7 @@
                     <thead class="thead-dark">
                         <tr>
                         <th scope="col">Cliente</th>
+                        <th scope="col">Titulo</th>
                         <th scope="col">Prioridade</th>
                         <th scope="col">Status</th>
                         <th scope="col">Data de abertura</th>
@@ -111,6 +122,7 @@
                         {% for chamado in chamados %}
                         <tr>
                             <td>{{ chamado.cliente }}</td>
+                            <td>{{ chamado.titulo }}</td>
                             <td>{{ chamado.prioridade }}</td>
                             <td>{{ chamado.status }}</td>
                             <td>{{ chamado.data }}</td>

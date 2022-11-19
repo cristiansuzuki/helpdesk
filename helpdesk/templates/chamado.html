@@ -2,6 +2,15 @@
 {% block title %} Editar chamado {% endblock %}
 {% block conteiner %}
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li {% if message.tags %} class="alert alert-success"{% endif %} style="list-style: none;">{{message}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
 <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
@@ -12,6 +21,14 @@
                             <h1 class="h4 text-gray-900 mb-4">Editar chamado de {{ chamado.cliente }}</h1>
                         </div>
                         <form method="POST">{% csrf_token %}
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Titulo</label>
+                                </div>
+                                {{ form.titulo }}
+                            </div>
+
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="inputGroupSelect01">Clientes</label>
@@ -70,7 +87,7 @@
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Resolução</span>
+                                        <span class="input-group-text">Descrição</span>
                                     </div>                                    
                                     {{ form.descricao }}
                                 </div>

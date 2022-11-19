@@ -36,6 +36,7 @@ def chamado(request, id):
     form = ChamadoForm(request.POST or None, instance=chamado)
     if form.is_valid():
         form.save()
+        messages.success(request, f'Chamado editado com sucesso !')
         return redirect(home)
     return render(request, 'chamado.html', {'chamado':chamado, 'form':form})
 

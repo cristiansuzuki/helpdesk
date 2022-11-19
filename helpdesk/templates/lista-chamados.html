@@ -8,22 +8,22 @@
             <thead class="thead-dark">
                 <tr>
                     <th>Cliente</th>
+                    <th>Titulo</th>
                     <th>Técnico</th>
                     <th>Prioridade</th>
                     <th>Status</th>
                     <th>Data de abertura</th>
-                    <th>Tipo do chamado</th>
                     <th>Sistema</th>
                 </tr>
             </thead>
             <tfoot class="thead-light">
                 <tr>
                     <th>Cliente</th>
+                    <th>Titulo</th>
                     <th>Técnico</th>
                     <th>Prioridade</th>
                     <th>Status</th>
                     <th>Data de abertura</th>
-                    <th>Tipo do chamado</th>
                     <th>Sistema</th>
                 </tr>
             </tfoot>
@@ -31,11 +31,11 @@
                 {% for chamado in chamados_abertos %}
                 <tr>
                     <td><h3>{{ chamado.cliente }}</h3></td>
+                    <td><h3>{{ chamado.titulo }}</h3></td>
                     <td><h3>{{ chamado.funcionario }}</h3></td>
                     <td><h3>{{ chamado.prioridade }}</h3></td>
                     <td><h3>{{ chamado.status }}</h3></td>
                     <td><h3>{{ chamado.data }}</h3></td>
-                    <td><h3>{{ chamado.tipo_chamado }}</h3></td>
                     <td><h3>{{ chamado.sistema }}</h3></td>
                 </tr>
                 {% endfor %}

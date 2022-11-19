@@ -21,6 +21,14 @@
                             <h1 class="h4 text-gray-900 mb-4">Realizar novo chamado</h1>
                         </div>
                         <form method="POST">{% csrf_token %}
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Titulo</label>
+                                </div>
+                                {{ form.titulo }}
+                            </div>
+
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="inputGroupSelect01">Clientes</label>
