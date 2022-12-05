@@ -9,9 +9,9 @@ class ClienteForm(forms.ModelForm):
             'nome_cliente': forms.TextInput(
                 attrs={'type': 'text', 'class': 'form-control form-control-user', 'id': 'exampleFirstName', 'placeholder': 'Nome do Cliente'}),
             'cnpj': forms.NumberInput(
-                attrs={'type':'number', 'class':'form-control form-control-user', 'id': 'exampleInputNumber', 'placeholder': 'CNPJ do Cliente'}),
+                attrs={'type':'text', 'class':'form-control form-control-user', 'id': 'id_cnpj', 'placeholder': 'CNPJ do Cliente'}),
             'telefone': forms.NumberInput(
-                attrs={'type':'number', 'class':'form-control form-control-user', 'id': 'exampleInputNumber', 'placeholder': 'Numero do Cliente'}),
+                attrs={'type':'text', 'class':'form-control form-control-user', 'id': 'id_telefone', 'placeholder': 'Numero do Cliente'}),
             'empresa': forms.TextInput(
                 attrs={'type':'text', 'class':'form-control form-control-user', 'id': 'exampleInputName', 'placeholder': 'Empresa'}),    
         }

@@ -397,6 +397,24 @@
     <!-- Page level custom scripts calendar -->
     <script src="{% static 'js/calendar.js' %}"></script>
 
+    <script src="{% static 'js/jquery.mask.min.js' %}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#id_cnpj").mask("00.000.000/0000-00");
+            var SPMaskBehavior = function (val) {
+                return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+                },
+                spOptions = {
+                onKeyPress: function(val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                    }
+                };
+
+                $('#id_telefone').mask(SPMaskBehavior, spOptions);
+});
+    </script>
+
     <script>
         $(document).ready(function() {
             // messages timeout for 10 sec

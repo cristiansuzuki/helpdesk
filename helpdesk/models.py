@@ -10,8 +10,8 @@ class Funcionario(models.Model):
 
 class Cliente(models.Model):
     nome_cliente = models.CharField(max_length=100)
-    cnpj = models.IntegerField()
-    telefone = models.IntegerField()
+    cnpj = models.CharField(max_length=25)
+    telefone = models.CharField(max_length=25)
     empresa = models.CharField(max_length=100, default='')
 
     def __str__(self):
