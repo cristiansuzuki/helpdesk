@@ -11,9 +11,9 @@
                     <th>Titulo</th>
                     <th>Técnico</th>
                     <th>Prioridade</th>
-                    <th>Status</th>
                     <th>Data de abertura</th>
                     <th>Sistema</th>
+                    <th>Editar</th>
                 </tr>
             </thead>
             <tfoot class="thead-light">
@@ -22,9 +22,9 @@
                     <th>Titulo</th>
                     <th>Técnico</th>
                     <th>Prioridade</th>
-                    <th>Status</th>
                     <th>Data de abertura</th>
                     <th>Sistema</th>
+                    <th>Editar</th>
                 </tr>
             </tfoot>
             <tbody>
@@ -34,9 +34,10 @@
                     <td><h3>{{ chamado.titulo }}</h3></td>
                     <td><h3>{{ chamado.funcionario }}</h3></td>
                     <td><h3>{{ chamado.prioridade }}</h3></td>
-                    <td><h3>{{ chamado.status }}</h3></td>
                     <td><h3>{{ chamado.data }}</h3></td>
                     <td><h3>{{ chamado.sistema }}</h3></td>
+                    <td><a href="{% url 'chamado' chamado.id %}" class="btn btn-outline-secondary btn-sm">Editar</a></td>
+
                 </tr>
                 {% endfor %}
             </tbody>
