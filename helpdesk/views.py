@@ -10,11 +10,14 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def home(request):
     chamados = Chamado.objects.all()
+    chamados_fechados_usuario = len(Chamado.objects.filter(funcionario=request.user).filter(status__nome_status="FECHADO"))
+    chamados_abertos_usuario = len(Chamado.objects.filter(funcionario=request.user).filter(status__nome_status="ABERTO"))
+    chamados_andamento_usuario = len(Chamado.objects.filter(funcionario=request.user).filter(status__nome_status="ANDAMENTO"))
     num_chamados_abertos = len(Chamado.objects.filter(status__nome_status="ABERTO"))
     num_chamados_inicio = len(Chamado.objects.filter(status__nome_status="ANDAMENTO"))
     num_chamados_finalizado = len(Chamado.objects.filter(status__nome_status="FECHADO"))
     num_chamados_pendentes = len(Chamado.objects.filter(status__nome_status="PENDENTE"))
-    return render(request, 'home.html', {'chamados': chamados, 'num_chamados_abertos':num_chamados_abertos, 'num_chamados_inicio':num_chamados_inicio, 'num_chamados_finalizado':num_chamados_finalizado, 'num_chamados_pendentes':num_chamados_pendentes})
+    return render(request, 'home.html', {'chamados': chamados, 'chamados_fechados_usuario' : chamados_fechados_usuario , 'chamados_abertos_usuario' : chamados_abertos_usuario , 'chamados_andamento_usuario' : chamados_andamento_usuario , 'num_chamados_abertos':num_chamados_abertos, 'num_chamados_inicio':num_chamados_inicio, 'num_chamados_finalizado':num_chamados_finalizado, 'num_chamados_pendentes':num_chamados_pendentes})
 
 @login_required
 def calendario(request):

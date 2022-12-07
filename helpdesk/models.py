@@ -44,7 +44,7 @@ class TipoChamado(models.Model):
 class Chamado(models.Model):
     titulo = models.CharField(max_length=100)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    funcionario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,)
+    funcionario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     prioridade = models.ForeignKey(Prioridade, on_delete=models.CASCADE, default=2)
     data = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     descricao = models.TextField(max_length=1000)
