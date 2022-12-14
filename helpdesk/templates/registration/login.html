@@ -34,30 +34,38 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block" style="background-image: url('../../static/img/logo.png'); background-size: cover; background-position: center;"></div>
+                            <div class="col-lg-6 d-none d-lg-block" style="background-image: url('../../static/img/logo.png'); background-size: cover; "></div>
                             <div class="col-lg-6">
-                                <div class="p-5">
+                                <div class="p-4">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bem vindo(a)</h1>
                                     </div>
 
                                     <form class="form" method="POST">{% csrf_token %}
+                                        
+                                        {% if form.non_field_errors %}
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
-                                            id="{{ form.username }}
+                                            {% for error in form.non_field_errors %}
+                                                <li class="alert alert-danger" style="list-style: none;">{{ error }}</li>    
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user" id="{{ form.username }}
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="{{ form.password }}
+                                            <input type="password" class="form-control form-control-user" id="{{ form.password }}
                                         </div>
+
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Lembrar
-                                                    </label>
+                                                <label class="custom-control-label" for="customCheck">Lembrar</label>
                                             </div>
                                         </div>
+
                                         <button type='submit' class="btn btn-primary btn-user btn-block">
                                             Entrar
                                         </button>
@@ -65,9 +73,6 @@
                                         <a href="#" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Entre com Google
                                         </a>
-                                        <!-- <a href="#" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a> -->
                                     </form>
 
                                     <hr>
