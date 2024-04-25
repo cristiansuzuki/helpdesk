@@ -10,9 +10,9 @@ class Funcionario(models.Model):
 
 class Cliente(models.Model):
     nome_cliente = models.CharField(max_length=100)
-    cnpj = models.CharField(max_length=25)
-    telefone = models.CharField(max_length=25)
-    empresa = models.CharField(max_length=100, default='')
+    cnpj = models.CharField(max_length=25, blank=True)
+    telefone = models.CharField(max_length=25, blank=True)
+    empresa = models.CharField(max_length=100, default='', blank=True)
 
     def __str__(self):
         return self.nome_cliente
@@ -49,7 +49,7 @@ class Chamado(models.Model):
     data = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     descricao = models.TextField(max_length=1000)
     status = models.ForeignKey(Status, on_delete=models.CASCADE, default=1)
-    tipo_chamado = models.ForeignKey(TipoChamado, on_delete=models.CASCADE, default=1)
+    tipo_chamado = models.ForeignKey(TipoChamado, on_delete=models.CASCADE, default=2)
     resolucao = models.TextField(max_length=1000, blank=True)
     sistema = models.ForeignKey(Sistema, on_delete=models.CASCADE)
     solicitante = models.CharField(max_length=100, blank=True)

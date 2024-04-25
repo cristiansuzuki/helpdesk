@@ -16,6 +16,10 @@ class ClienteForm(forms.ModelForm):
                 attrs={'type':'text', 'class':'form-control form-control-user', 'id': 'exampleInputName', 'placeholder': 'Empresa'}),    
         }
 
+        def __init__(self, *args, **kwargs):
+            super(ClienteForm, self).__init__(*args, **kwargs)
+            self.fields['cnpj', 'telefone','empresa'].required = False
+
 class ChamadoForm(forms.ModelForm):
 
     class Meta:
