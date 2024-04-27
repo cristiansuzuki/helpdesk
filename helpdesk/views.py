@@ -5,8 +5,6 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-
 @login_required
 def home(request):
     chamados = Chamado.objects.all()
@@ -70,7 +68,7 @@ def cadastro_chamados(request):
         if form.is_valid():
             form.save()
             messages.success(request, f'Chamado criado com sucesso !')
-            return redirect('cadastro-chamados')
+            return redirect(home)
     else:
         form = ChamadoForm()
     return render(request, 'cadastro-chamados.html', {'form': form})
