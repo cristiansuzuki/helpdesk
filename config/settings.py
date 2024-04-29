@@ -42,6 +42,8 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'helpdesk',
+    'schedule',
+    'djangobower',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def home(request):
-    chamados = Chamado.objects.all()
+    chamados = Chamado.objects.all().order_by('data')
     chamados_fechados_usuario = len(Chamado.objects.filter(funcionario=request.user).filter(status__nome_status="CONCLUIDO"))
     chamados_pendentes_usuario = len(Chamado.objects.filter(funcionario=request.user).filter(status__nome_status="PENDENTE"))
     chamados_andamento_usuario = len(Chamado.objects.filter(funcionario=request.user).filter(status__nome_status="ANDAMENTO"))
