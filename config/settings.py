@@ -82,6 +82,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'djangobower.finders.BowerFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+]
+
+BOWER_COMPONENTS_ROOT = '../helpdesk/components/'
+
+BOWER_INSTALLED_APPS = (
+    'jquery',
+    'jquery-ui',
+    'bootstrap'
+)
+
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
