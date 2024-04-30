@@ -8,6 +8,13 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def home(request):
     chamados = Chamado.objects.all().order_by('data')
+    for chamado in chamados:
+        if chamado.status.id == 3:
+            chamado.color_class = 'text-success'
+        elif chamado.status.id == 2:
+            chamado.color_class = 'text-warning'
+        else:
+            chamado.color_class = 'text-primary'
     chamados_fechados_usuario = len(Chamado.objects.filter(funcionario=request.user).filter(status__nome_status="CONCLUIDO"))
     chamados_pendentes_usuario = len(Chamado.objects.filter(funcionario=request.user).filter(status__nome_status="PENDENTE"))
     chamados_andamento_usuario = len(Chamado.objects.filter(funcionario=request.user).filter(status__nome_status="ANDAMENTO"))

@@ -134,7 +134,10 @@
                             <td>{{ chamado.cliente }}</td>
                             <td>{{ chamado.titulo }}</td>
                             <td>{{ chamado.prioridade }}</td>
-                            <td>{{ chamado.status }}</td>
+                            <td class="{{ chamado.color_class }}">
+                                
+                                {{ chamado.status }}
+                            </td>
                             <td>{{ chamado.data }}</td>
                             <td>{{ chamado.tipo_chamado }}</td>
                             <td>{{ chamado.sistema }}</td>
