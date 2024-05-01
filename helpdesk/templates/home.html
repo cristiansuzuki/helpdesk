@@ -120,7 +120,7 @@
                         <tr>
                         <th scope="col">Cliente</th>
                         <th scope="col">Titulo</th>
-                        <th scope="col">Prioridade</th>
+                        <th scope="col">Tecnico</th>
                         <th scope="col">Status</th>
                         <th scope="col" aria-sort="descending" class="active" active=True>Data de abertura</th>
                         <th scope="col">Tipo do chamado</th>
@@ -133,7 +133,7 @@
                         <tr>
                             <td>{{ chamado.cliente }}</td>
                             <td>{{ chamado.titulo }}</td>
-                            <td>{{ chamado.prioridade }}</td>
+                            <td>{{ chamado.funcionario }}</td>
                             <td class="{{ chamado.color_class }}">
                                 
                                 {{ chamado.status }}
