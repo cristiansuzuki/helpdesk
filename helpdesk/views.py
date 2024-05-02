@@ -4,10 +4,11 @@ from .models import Chamado
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 @login_required
 def home(request):
-    chamados = Chamado.objects.all().order_by('data')
+    chamados = Chamado.objects.filter(Q(status__nome_status="PENDENTE") | Q(status__nome_status="ANDAMENTO")).order_by('data')
     for chamado in chamados:
         if chamado.status.id == 3:
             chamado.color_class = 'text-success'
