@@ -61,3 +61,6 @@ class EventoCalendario(models.Model):
     funcionario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     data_inicio = models.DateField(auto_now=False, auto_now_add=False, blank=True)
     data_final = models.DateField(auto_now=False, auto_now_add=False, blank=True)
+
+    def __str__(self):
+        return self.titulo 
