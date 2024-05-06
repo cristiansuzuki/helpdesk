@@ -18,7 +18,7 @@
                       title: "{{ evento.titulo }}",
                       start: "{{ evento.data_inicio | date:"Y-m-d"}}",
                       end: "{{ evento.data_final | date:"Y-m-d"}}",
-                    }
+                    },
                 {% endfor %}
           ]
         });
