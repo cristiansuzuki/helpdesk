@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from .forms import ClienteForm, ChamadoForm
-from .models import Chamado
+from .models import Chamado, EventoCalendario
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.http import JsonResponse 
 
 @login_required
 def home(request):
@@ -96,3 +97,11 @@ def blank(request):
 @login_required
 def forgot_password(request):
     return render(request, 'forgot-password.html')
+
+
+def calendario(request):  
+    all_events = EventoCalendario.objects.all()
+    context = {
+        "events":all_events,
+    }
+    return render(request,'calendario.html',context)

@@ -53,3 +53,11 @@ class Chamado(models.Model):
     resolucao = models.TextField(max_length=1000, blank=True)
     sistema = models.ForeignKey(Sistema, on_delete=models.CASCADE)
     solicitante = models.CharField(max_length=100, blank=True)
+
+
+class EventoCalendario(models.Model):
+    id = models.AutoField(primary_key=True)
+    titulo = models.CharField(max_length=100)
+    funcionario = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    data_inicio = models.DateField(auto_now=False, auto_now_add=False, blank=True)
+    data_final = models.DateField(auto_now=False, auto_now_add=False, blank=True)

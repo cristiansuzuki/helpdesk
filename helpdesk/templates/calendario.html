@@ -3,5 +3,34 @@
 {% block conteiner %}
 
 
-<h3> calendario ira ficar aqui ! </h3>
+<head>
+    <meta charset='utf-8' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          events: [
+                 {% for evento in events %}
+                    {
+                      title: "{{ evento.titulo }}",
+                      start: "{{ evento.data_inicio | date:"Y-m-d"}}",
+                      end: "{{ evento.data_final | date:"Y-m-d"}}",
+                    }
+                {% endfor %}
+          ]
+        });
+        calendar.render();
+        calendar.setOption('locale', 'pt-br');
+      });
+
+    </script>
+  </head>
+  <body>
+    <div id='calendar' class="container"></div>
+  </body>
+
+
 {% endblock %}
