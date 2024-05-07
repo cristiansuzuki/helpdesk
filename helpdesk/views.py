@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import ClienteForm, ChamadoForm
+from .forms import ClienteForm, ChamadoForm, EventoForm
 from .models import Chamado, EventoCalendario
 from django.shortcuts import redirect
 from django.contrib import messages
@@ -98,10 +98,25 @@ def blank(request):
 def forgot_password(request):
     return render(request, 'forgot-password.html')
 
-
+@login_required
 def calendario(request):  
     all_events = EventoCalendario.objects.all()
     context = {
         "events":all_events,
     }
     return render(request,'calendario.html',context)
+
+@login_required
+def cadastro_eventos(request):
+    if request.method == 'POST':
+        form = EventoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Evento criado com sucesso !')
+            return redirect(calendario)
+    else:
+        form = EventoForm()
+    return render(request, 'cadastro-eventos.html', {'form':form})
+
+
+

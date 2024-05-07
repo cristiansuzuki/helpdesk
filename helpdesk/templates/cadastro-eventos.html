@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% block title %} Cadastrar Evento {% endblock %}
+{% block conteiner %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li {% if message.tags %} class="alert alert-success"{% endif %} style="list-style: none;">{{message}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Adicionar novo evento</h1>
+                        </div>
+                        <form method="POST">{% csrf_token %}
+                                <div class="form-group">
+                                    {{ form.titulo }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.funcionario }}
+                                </div>
+                                
+                                <div class="form-group">
+                                    {{ form.data_inicio }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.data_final }}
+                                </div>
+                          
+                            <button type="submit" class="btn btn-primary btn-user btn-block">ENVIAR</button>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="{% url 'home' %}">Retorna ao Home!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

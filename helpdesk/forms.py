@@ -1,5 +1,5 @@
 from django import forms
-from .models import Cliente, Chamado
+from .models import Cliente, Chamado, EventoCalendario
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -46,4 +46,20 @@ class ChamadoForm(forms.ModelForm):
                 attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),
             'solicitante': forms.TextInput(
                 attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': ''}),
+        }
+
+class EventoForm(forms.ModelForm):
+
+    class Meta:
+        model = EventoCalendario
+        fields = ('titulo', 'funcionario', 'data_inicio', 'data_final')
+        widgets = {
+            'titulo': forms.TextInput(
+                  attrs={'type': 'text', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': 'Titulo do evento'}), 
+            'funcionario':forms.Select(
+                attrs={'type': 'select', 'class': 'form-control', 'id': 'exampleInputSelect', 'placeholder': '', 'value': '10'}),
+            'data_inicio': forms.DateInput(
+                attrs={'type': 'date', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': ''}),
+            'data_final': forms.DateInput(
+                attrs={'type': 'date', 'class': 'form-control', 'id': 'exampleInputName', 'placeholder': ''}),         
         }
