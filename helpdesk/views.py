@@ -118,5 +118,9 @@ def cadastro_eventos(request):
         form = EventoForm()
     return render(request, 'cadastro-eventos.html', {'form':form})
 
+@login_required
+def lista_clientes(request):
+    return render(request, 'lista-clientes.html')
+
 
 
