@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block title %} Lista de eventos {% endblock %}
+{% block conteiner %}
+
+
+{% for evento in eventos %}
+
+<div class="div-eventos">
+    <p>• {{ evento.titulo}}</p>
+</div>
+
+
+
+{% endfor %}
+
+
+
+{% endblock %}
+

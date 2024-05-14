@@ -1,12 +1,13 @@
 {% extends 'index.html' %}
-{% block title %} Chamados em andamento {% endblock %}
+{% block title %} Lista de clientes{% endblock %}
 {% block conteiner %}
 
 
 {% for cliente in clientes %}
 
 <div class="div-clientes">
-    <p>• {{ cliente.nome_cliente }}  <td><a href="{% url 'cliente' cliente.id %}" class="btn btn-outline-secondary btn-sm">Editar</a></td></p>
+    <p>• {{ cliente.nome_cliente }}</p>
+    <td><a href="{% url 'cliente' cliente.id %}" class="btn btn-outline-secondary btn-sm">Editar</a></td>
 </div>
 
 

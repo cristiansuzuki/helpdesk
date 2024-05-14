@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .forms import ClienteForm, ChamadoForm, EventoForm, ClienteForm
-from .models import Chamado, EventoCalendario, Cliente
+from .forms import ClienteForm, ChamadoForm, EventoForm, ClienteForm, EventoForm
+from .models import Chamado, EventoCalendario, Cliente, EventoCalendario
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -95,18 +95,6 @@ def calendario(request):
     return render(request,'calendario.html',context)
 
 @login_required
-def cadastro_eventos(request):
-    if request.method == 'POST':
-        form = EventoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, f'Evento criado com sucesso !')
-            return redirect(calendario)
-    else:
-        form = EventoForm()
-    return render(request, 'cadastro-eventos.html', {'form':form})
-
-@login_required
 def lista_clientes(request):
     clientes = Cliente.objects.all().order_by('nome_cliente')
     return render(request, 'lista-clientes.html', {'clientes': clientes})
@@ -132,6 +120,25 @@ def cliente(request, id):
         messages.success(request, f'Cliente editado com sucesso !')
         return redirect(home)
     return render(request, 'cliente.html', {'cliente':cliente, 'form':form})
+
+@login_required
+def cadastro_eventos(request):
+    if request.method == 'POST':
+        form = EventoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Evento criado com sucesso !')
+            return redirect(calendario)
+    else:
+        form = EventoForm()
+    return render(request, 'cadastro-eventos.html', {'form':form})
+
+@login_required
+def lista_evento(request):
+    eventos = EventoCalendario.objects.all()
+    return render(request, 'lista-eventos.html', {'eventos': eventos})
+
+
 
 
 

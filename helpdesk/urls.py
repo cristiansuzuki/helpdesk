@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import home, calendario, lista_chamados, chamado, cadastro_cliente, cadastro_chamados, register, forgot_password, error_404, blank, lista_chamados_fechados, lista_chamados_andamento,cadastro_eventos, lista_clientes, cliente
-
+from .views import home, calendario, lista_chamados, chamado, cadastro_cliente, cadastro_chamados, register, forgot_password, error_404, blank, lista_chamados_fechados, lista_chamados_andamento,cadastro_eventos, lista_clientes, cliente, lista_evento
 urlpatterns = [
     path('', home, name='home'),
     path('lista-chamados', lista_chamados, name='lista-chamados'),
@@ -16,4 +15,6 @@ urlpatterns = [
     path('cadastro-eventos', cadastro_eventos, name='cadastro-eventos'),
     path('lista-clientes', lista_clientes, name='lista-clientes'),
     path('cliente/<int:id>', cliente, name='cliente'),
+    path('lista-evento', lista_evento, name='lista-eventos'),
+
 ]
