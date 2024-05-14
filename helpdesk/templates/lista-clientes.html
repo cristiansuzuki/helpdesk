@@ -3,4 +3,17 @@
 {% block conteiner %}
 
 
+{% for cliente in clientes %}
+
+<div class="div-clientes">
+    <p>• {{ cliente.nome_cliente }}  <td><a href="{% url 'cliente' cliente.id %}" class="btn btn-outline-secondary btn-sm">Editar</a></td></p>
+</div>
+
+
+
+{% endfor %}
+
+
+
 {% endblock %}
+

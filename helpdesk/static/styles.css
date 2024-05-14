@@ -1,0 +1,10 @@
+/* styles.css */
+
+/* Estilo para a div com a classe 'div-clientes' */
+.div-clientes {
+    background-color: #f0f0f0; /* Cor de fundo */
+    padding: 20px; /* Espaçamento interno */
+    margin: 20px; /* Espaçamento externo */
+    border: 1px solid #ccc; /* Borda */
+    color: black;
+}

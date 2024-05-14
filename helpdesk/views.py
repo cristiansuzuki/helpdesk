@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .forms import ClienteForm, ChamadoForm, EventoForm
-from .models import Chamado, EventoCalendario
+from .forms import ClienteForm, ChamadoForm, EventoForm, ClienteForm
+from .models import Chamado, EventoCalendario, Cliente
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -59,18 +59,6 @@ def chamado(request, id):
     return render(request, 'chamado.html', {'chamado':chamado, 'form':form})
 
 @login_required
-def cadastro_cliente(request):
-    if request.method == "POST":
-        form = ClienteForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, f'Cliente criado com sucesso !')
-            return redirect('cadastro-cliente')
-    else:
-        form = ClienteForm()
-    return render(request, 'cadastro-cliente.html', {'form': form})
-
-@login_required
 def cadastro_chamados(request):
     if request.method == 'POST':
         form = ChamadoForm(request.POST)
@@ -120,7 +108,35 @@ def cadastro_eventos(request):
 
 @login_required
 def lista_clientes(request):
-    return render(request, 'lista-clientes.html')
+    clientes = Cliente.objects.all().order_by('nome_cliente')
+    return render(request, 'lista-clientes.html', {'clientes': clientes})
+
+@login_required
+def cadastro_cliente(request):
+    if request.method == "POST":
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Cliente criado com sucesso !')
+            return redirect('cadastro-cliente')
+    else:
+        form = ClienteForm()
+    return render(request, 'cadastro-cliente.html', {'form': form})
+
+@login_required
+def cliente(request, id):
+    cliente = Cliente.objects.get(pk=id)
+    form = ClienteForm(request.POST or None, instance=cliente)
+    if form.is_valid():
+        form.save()
+        messages.success(request, f'Cliente editado com sucesso !')
+        return redirect(home)
+    return render(request, 'cliente.html', {'cliente':cliente, 'form':form})
+
+
+
+
+
 
 
 
