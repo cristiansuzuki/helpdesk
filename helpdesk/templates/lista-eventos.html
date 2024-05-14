@@ -6,14 +6,10 @@
 {% for evento in eventos %}
 
 <div class="div-eventos">
-    <p>• {{ evento.titulo}}</p>
+    <p>• {{ evento.titulo}} | Funcionario: {{ evento.funcionario}}</p>
+    <p>Data Inicio: {{ evento.data_inicio}} | Data Final: {{ evento.data_final}}</p>
 </div>
 
-
-
 {% endfor %}
-
-
-
 {% endblock %}
 
