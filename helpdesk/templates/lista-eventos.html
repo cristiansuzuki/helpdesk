@@ -8,6 +8,10 @@
 <div class="div-eventos">
     <p>• {{ evento.titulo}} | Funcionario: {{ evento.funcionario}}</p>
     <p>Data Inicio: {{ evento.data_inicio}} | Data Final: {{ evento.data_final}}</p>
+    <form method="post" action="{% url 'delete_evento' evento.id %}">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este item?')">Excluir Item</button>
+    </form>
 </div>
 
 {% endfor %}

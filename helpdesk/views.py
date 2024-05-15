@@ -127,7 +127,6 @@ def cadastro_eventos(request):
         form = EventoForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Evento criado com sucesso !')
             return redirect(calendario)
     else:
         form = EventoForm()
@@ -135,8 +134,16 @@ def cadastro_eventos(request):
 
 @login_required
 def lista_evento(request):
-    eventos = EventoCalendario.objects.all()
+    eventos = EventoCalendario.objects.all().order_by('-id')
     return render(request, 'lista-eventos.html', {'eventos': eventos})
+
+@login_required
+def delete_evento(request, id):
+    delete_evento = EventoCalendario.objects.get(pk=id)
+    delete_evento.delete()
+    messages.success(request, f'Evento deletado com sucesso')
+        
+    return render(request, 'home.html', {'delete_evento':delete_evento})
 
 
 
