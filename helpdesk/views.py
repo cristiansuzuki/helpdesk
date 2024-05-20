@@ -4,6 +4,8 @@ from .models import Chamado, EventoCalendario, Cliente, EventoCalendario
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.http import JsonResponse 
 
 
 @login_required
@@ -143,13 +145,3 @@ def delete_evento(request, id):
     messages.success(request, f'Evento deletado com sucesso')
         
     return render(request, 'home.html', {'delete_evento':delete_evento})
-
-
-
-
-
-
-
-
-
-
