@@ -1,0 +1,138 @@
+{% extends 'index.html' %}
+{% block title %} Realizar Chamado {% endblock %}
+{% block conteiner %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li {% if message.tags %} class="alert alert-success"{% endif %} style="list-style: none;">{{message}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Teste</h1>
+                        </div>
+                        <form method="POST">{% csrf_token %}
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Titulo</label>
+                                </div>
+                                {{ form.titulo }}
+                            </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Clientes</label>
+                                    </div>
+                                    {{ form.cliente }}
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        + Cliente
+                                    </button>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Funcionário</label>
+                                    </div>
+                                    {{ form.funcionario }}
+                                </div>
+                                
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Prioridade</label>
+                                    </div>
+                                    {{ form.prioridade }}
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Status</label>
+                                    </div>
+                                    {{ form.status }}
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Tipo de Chamado</label>
+                                    </div>
+                                    {{ form.tipo_chamado }}
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Sistema</span>
+                                    </div>
+                                    {{ form.sistema }}
+                                </div>
+
+                                <!-- <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Solicitante</span>
+                                    </div>
+                                    {{ form.solicitante }}
+                                </div> -->
+
+                                <div class="form-group mb-3">
+                                    {{ form.descricao }}
+                                </div>
+
+                            <button type="submit" class="btn btn-primary btn-user btn-block">ENVIAR</button>
+                        </form>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Novo Cliente</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST">{% csrf_token %}
+                                        <div class="form-group">
+                                            {{ form.nome_cliente }}
+                                        </div>
+        
+                                        <div class="form-group">
+                                            {{ form.telefone }}
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            {{ form.cnpj }}
+                                        </div>
+        
+                                        <div class="form-group">
+                                            {{ form.empresa }}
+                                        </div>
+                                        
+                                        <button type="submit"></button>
+                                </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">SALVAR</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="{% url 'home' %}">Retorna ao Home!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
