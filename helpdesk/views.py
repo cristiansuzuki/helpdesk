@@ -71,6 +71,18 @@ def cadastro_chamados(request):
     return render(request, 'cadastro-chamados.html', {'form': form})
 
 @login_required
+def cadastro_chamadoscopia(request):
+    if request.method == 'POST':
+        form = ChamadoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Chamado criado com sucesso !')
+            return redirect(home)
+    else:
+        form = ChamadoForm()
+    return render(request, 'cadastro-chamadoscopia.html', {'form': form})
+
+@login_required
 def register(request):
     return render(request, 'register.html')
 
@@ -110,6 +122,18 @@ def cadastro_cliente(request):
     else:
         form = ClienteForm()
     return render(request, 'cadastro-cliente.html', {'form': form})
+
+@login_required
+def cadastro_clientecopia(request):
+    if request.method == "POST":
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Cliente criado com sucesso !')
+            return redirect('cadastro-clientecopia')
+    else:
+        form = ClienteForm()
+    return render(request, 'cadastro-clientecopia.html', {'form': form})
 
 @login_required
 def cliente(request, id):
